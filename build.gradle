@@ -38,6 +38,7 @@ jar {
 
 application {
     mainClassName = 'com.shanmathuran.sritharan.sudokuvalidator.Main'
+    applicationName = 'validate'
 }
 
 test {
