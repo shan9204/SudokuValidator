@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.shanmathuran.sritharan'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    compile 'org.slf4j:slf4j-api:1.7.26'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.0'
+    testCompile 'org.assertj:assertj-core:3.11.1'
+}
+
+jar {
+    manifest {
+        attributes (
+                'Main-Class': 'com.shanmathuran.sritharan.sudokuvalidator.Main'
+        )
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+application {
+    mainClassName = 'com.shanmathuran.sritharan.sudokuvalidator.Main'
+}
+
+test {
+    useJUnitPlatform()
+}
